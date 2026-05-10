@@ -29,7 +29,6 @@
   --cup-gradient-end: #2A2418;
 }
 
-/* Light Theme - Warm Tea Colors (less bright) */
 .light-theme {
   --bg-primary: #F5EDE0;
   --bg-secondary: #EDE3D4;
@@ -37,12 +36,12 @@
   --text-secondary: #7A5A4A;
   --border-color: rgba(74, 55, 40, 0.15);
   --card-bg: #FFFFFF;
-  --accent: #88B04B;
-  --accent-glow: rgba(136, 176, 75, 0.12);
-  --steam-color: rgba(100, 80, 60, 0.25);
-  --cup-fill: #B87D4A;
-  --cup-gradient-start: #D4C4B0;
-  --cup-gradient-end: #C4B4A0;
+  --accent: #B87D4A;
+  --accent-glow: rgba(184, 125, 74, 0.12);
+  --steam-color: rgba(184, 125, 74, 0.25);
+  --cup-fill: #C68B5E;
+  --cup-gradient-start: #E8DCC8;
+  --cup-gradient-end: #D4C4B0;
 }
 
 body {
