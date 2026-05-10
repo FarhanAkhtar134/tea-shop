@@ -173,32 +173,13 @@ export default function UnfurlingLeaf() {
             and character.
           </p>
 
-          {/* Call to Action Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={hasAnimated ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 2.3 }}
           >
             <Link href="/catalog">
-              <button className="group relative px-8 py-3 bg-transparent border border-amber-500/40 text-amber-400 rounded-full hover:border-amber-400 hover:text-amber-300 transition-all duration-300 overflow-hidden">
-                <span className="relative z-10 flex items-center gap-2">
-                  Explore Collection
-                  <svg
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </span>
-                <div className="absolute inset-0 bg-amber-500/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
-              </button>
+              <button className="explore-button">Explore Collection</button>
             </Link>
           </motion.div>
         </motion.div>

@@ -434,7 +434,6 @@ export default function TeaCatalog() {
           ))}
         </motion.div>
 
-        {/* View All Button - Fixed version without getComputedStyle */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -447,7 +446,7 @@ export default function TeaCatalog() {
         </motion.div>
       </div>
 
-      {/* Add this style to handle hover without inline JS */}
+
       <style jsx>{`
         .view-all-button:hover {
           background-color: var(--accent);

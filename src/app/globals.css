@@ -17,29 +17,32 @@
 .dark-theme {
   --bg-primary: #0f0e0a;
   --bg-secondary: #1a1814;
-  --text-primary: #e8e2d9;
-  --text-secondary: #a8a39a;
-  --border-color: rgba(212, 165, 116, 0.3);
+  --text-primary: #ead1ae;
+  --text-secondary: #c5b08c;
+  --text-muted: #988a74;
+  --border-color: rgba(212, 165, 116, 0.25);
   --card-bg: #1a1814;
-  --accent: #C8A882;
-  --accent-glow: rgba(200, 168, 130, 0.15);
-  --steam-color: rgba(255, 255, 255, 0.4);
+  --accent: #D4A574;
+  --accent-glow: rgba(212, 165, 116, 0.12);
+  --steam-color: rgba(212, 165, 116, 0.25);
   --cup-fill: #C68B5E;
   --cup-gradient-start: #3A3022;
   --cup-gradient-end: #2A2418;
 }
 
+/* Light Theme - Warm Tea Colors */
 .light-theme {
   --bg-primary: #F5EDE0;
   --bg-secondary: #EDE3D4;
   --text-primary: #4A3728;
-  --text-secondary: #7A5A4A;
+  --text-secondary: #6B5038;
+  --text-muted: #8B6B4A;
   --border-color: rgba(74, 55, 40, 0.15);
   --card-bg: #FFFFFF;
-  --accent: #B87D4A;
-  --accent-glow: rgba(184, 125, 74, 0.12);
-  --steam-color: rgba(184, 125, 74, 0.25);
-  --cup-fill: #C68B5E;
+  --accent: #8B6914;
+  --accent-glow: rgba(139, 105, 20, 0.1);
+  --steam-color: rgba(139, 105, 20, 0.15);
+  --cup-fill: #B87D4A;
   --cup-gradient-start: #E8DCC8;
   --cup-gradient-end: #D4C4B0;
 }
@@ -51,7 +54,7 @@ body {
   min-height: 100vh;
 }
 
-/* Common button styles */
+/* Button styles */
 .view-all-button {
   border: 1px solid var(--border-color);
   color: var(--accent);
@@ -69,6 +72,24 @@ body {
   border-color: var(--accent);
 }
 
+/* Explore Collection button on landing page */
+.explore-button {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.explore-button:hover {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+  border-color: var(--accent);
+}
+
 /* Tea card styles */
 .tea-card {
   border-radius: 0.75rem;
@@ -80,4 +101,19 @@ body {
 .tea-card:hover {
   transform: translateY(-8px);
   border-color: var(--accent);
+}
+
+/* Rarity badge */
+.rarity-badge {
+  background-color: rgba(139, 105, 20, 0.6);
+  color: #D4A574;
+  font-size: 0.625rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+}
+
+.light-theme .rarity-badge {
+  background-color: rgba(139, 105, 20, 0.15);
+  color: #8B6914;
 }
