@@ -1,9 +1,8 @@
 // "use client";
 // import { motion, useInView } from "framer-motion";
-// import { useRef } from "react";
-// import Image from "next/image";
-// import SteamingCup from "./SteamingCup";
+// import { useRef, useState, useEffect } from "react";
 // import Link from "next/link";
+// import SteamingCup from "./SteamingCup";
 
 // const teaProducts = [
 //   {
@@ -65,6 +64,11 @@
 // export default function TeaCatalog() {
 //   const ref = useRef(null);
 //   const isInView = useInView(ref, { once: true, amount: 0.1 });
+//   const [mounted, setMounted] = useState(false);
+
+//   useEffect(() => {
+//     setMounted(true);
+//   }, []);
 
 //   const containerVariants = {
 //     hidden: { opacity: 0 },
@@ -84,7 +88,11 @@
 //   return (
 //     <section
 //       ref={ref}
-//       className="py-20 bg-gradient-to-b from-[#0f0e0a] to-[#1a1814]"
+//       className="py-20 transition-colors duration-300"
+//       style={{
+//         background:
+//           "linear-gradient(to bottom, var(--bg-secondary), var(--bg-primary))",
+//       }}
 //     >
 //       <div className="container mx-auto px-4">
 //         {/* Section Header with Steaming Cup */}
@@ -94,7 +102,8 @@
 //             initial={{ opacity: 0, y: 20 }}
 //             animate={isInView ? { opacity: 1, y: 0 } : {}}
 //             transition={{ duration: 0.6, delay: 0.3 }}
-//             className="text-3xl md:text-4xl font-serif text-amber-200/80 mb-3"
+//             className="text-3xl md:text-4xl font-serif mb-3"
+//             style={{ color: "var(--text-primary)" }}
 //           >
 //             Our Tea Collection
 //           </motion.h2>
@@ -102,13 +111,15 @@
 //             initial={{ width: 0 }}
 //             animate={isInView ? { width: "4rem" } : {}}
 //             transition={{ duration: 0.8, delay: 0.5 }}
-//             className="h-px bg-amber-500/40 mx-auto mb-4"
+//             className="h-px mx-auto mb-4"
+//             style={{ backgroundColor: "var(--border-color)" }}
 //           />
 //           <motion.p
 //             initial={{ opacity: 0 }}
 //             animate={isInView ? { opacity: 0.6 } : {}}
 //             transition={{ delay: 0.7 }}
-//             className="text-gray-500 max-w-2xl mx-auto text-sm tracking-wide"
+//             className="max-w-2xl mx-auto text-sm tracking-wide"
+//             style={{ color: "var(--text-secondary)" }}
 //           >
 //             Each leaf tells a story of terroir, tradition, and time
 //           </motion.p>
@@ -126,7 +137,7 @@
 //               key={tea.id}
 //               variants={itemVariants}
 //               whileHover={{ y: -8 }}
-//               className="group bg-[#1a1814] border border-amber-900/30 rounded-xl overflow-hidden hover:border-amber-700/50 transition-all duration-300"
+//               className="group rounded-xl overflow-hidden transition-all duration-300 tea-card"
 //             >
 //               {/* Tea image placeholder */}
 //               <div className="h-48 bg-gradient-to-br from-amber-900/20 to-transparent flex items-center justify-center relative overflow-hidden">
@@ -145,27 +156,56 @@
 
 //               {/* Tea info */}
 //               <div className="p-6">
-//                 <h3 className="text-xl font-serif text-amber-200/80 mb-1 group-hover:text-amber-200 transition-colors">
+//                 <h3
+//                   className="text-xl font-serif mb-1 group-hover:opacity-80 transition-colors"
+//                   style={{ color: "var(--text-primary)" }}
+//                 >
 //                   {tea.name}
 //                 </h3>
-//                 <p className="text-xs text-amber-500/50 mb-3 tracking-wide">
+//                 <p
+//                   className="text-xs mb-3 tracking-wide"
+//                   style={{ color: "var(--accent)", opacity: 0.5 }}
+//                 >
 //                   {tea.origin}
 //                 </p>
 
 //                 {/* Tasting notes */}
 //                 <div className="mb-4">
-//                   <p className="text-[11px] text-gray-500 uppercase tracking-wider mb-1">
+//                   <p
+//                     className="text-[11px] uppercase tracking-wider mb-1"
+//                     style={{ color: "var(--text-secondary)", opacity: 0.7 }}
+//                   >
 //                     Tasting Notes
 //                   </p>
-//                   <p className="text-sm text-gray-400">{tea.notes}</p>
+//                   <p
+//                     className="text-sm"
+//                     style={{ color: "var(--text-secondary)" }}
+//                   >
+//                     {tea.notes}
+//                   </p>
 //                 </div>
 
 //                 {/* Price and CTA */}
-//                 <div className="flex items-center justify-between pt-3 border-t border-amber-900/30">
-//                   <span className="text-2xl font-light text-amber-400">
+//                 <div
+//                   className="flex items-center justify-between pt-3 border-t"
+//                   style={{ borderColor: "var(--border-color)" }}
+//                 >
+//                   <span
+//                     className="text-2xl font-light"
+//                     style={{ color: "var(--accent)" }}
+//                   >
 //                     {tea.price}
 //                   </span>
-//                   <button className="text-xs tracking-wider text-gray-400 hover:text-amber-400 transition-colors flex items-center gap-1">
+//                   <button
+//                     className="text-xs tracking-wider transition-colors flex items-center gap-1"
+//                     style={{ color: "var(--text-secondary)" }}
+//                     onMouseEnter={(e) =>
+//                       (e.currentTarget.style.color = "var(--accent)")
+//                     }
+//                     onMouseLeave={(e) =>
+//                       (e.currentTarget.style.color = "var(--text-secondary)")
+//                     }
+//                   >
 //                     Learn More
 //                     <svg
 //                       className="w-3 h-3 group-hover:translate-x-1 transition-transform"
@@ -187,7 +227,6 @@
 //           ))}
 //         </motion.div>
 
-//         {/* View All Button */}
 //         <motion.div
 //           initial={{ opacity: 0, y: 20 }}
 //           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -195,76 +234,86 @@
 //           className="text-center mt-12"
 //         >
 //           <Link href="/catalog">
-//             <button className="px-8 py-2 border border-amber-500/30 text-amber-400 text-sm rounded-full hover:bg-amber-500/10 hover:border-amber-500/50 transition-all duration-300">
-//               View Full Collection →
-//             </button>
+//             <button className="view-all-button">View Full Collection →</button>
 //           </Link>
 //         </motion.div>
 //       </div>
+
+
+//       <style jsx>{`
+//         .view-all-button:hover {
+//           background-color: var(--accent);
+//           color: var(--bg-primary);
+//           border-color: var(--accent);
+//         }
+//       `}</style>
 //     </section>
 //   );
 // }
+
 
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import SteamingCup from "./SteamingCup";
+import { useLanguage } from '../context/LanguageContext';  // Add this import
+
 
 const teaProducts = [
   {
     id: 1,
-    name: "Silver Needle White Tea",
-    origin: "Fujian, China",
-    notes: "Honey, Melon, Fresh Hay",
+    teaKey: 'silverNeedle',  
+    originKey: 'fujian',      
+    notesKey: 'silverNeedle', 
     price: "$24.99",
     image: "🍃",
-    rarity: "Rare",
+    rarityKey: 'rare',        // Add this key
   },
   {
     id: 2,
-    name: "Da Hong Pao",
-    origin: "Wuyi Mountains",
-    notes: "Mineral, Orchid, Stone Fruit",
+    teaKey: 'daHongPao',
+    originKey: 'wuyi',
+    notesKey: 'daHongPao',
     price: "$32.99",
     image: "🌿",
-    rarity: "Premium",
+    rarityKey: 'premium',
   },
   {
     id: 3,
-    name: "Gyokuro",
-    origin: "Uji, Japan",
-    notes: "Umami, Seaweed, Sweet",
+    teaKey: 'gyokuro',
+    originKey: 'uji',
+    notesKey: 'gyokuro',
     price: "$29.99",
     image: "🍵",
-    rarity: "Limited",
+    rarityKey: 'limited',
   },
   {
     id: 4,
-    name: "Ancient Pu-Erh",
-    origin: "Yunnan, China",
-    notes: "Earthy, Dark Chocolate, Mushroom",
+    teaKey: 'ancientPuErh',
+    originKey: 'yunnan',
+    notesKey: 'ancientPuErh',
     price: "$45.99",
     image: "🍂",
-    rarity: "Aged 10 Years",
+    rarityKey: 'aged10',
   },
   {
     id: 5,
-    name: "Darjeeling First Flush",
-    origin: "West Bengal, India",
-    notes: "Muscatel, Floral, Citrus",
+    teaKey: 'darjeeling',
+    originKey: 'westBengal',
+    notesKey: 'darjeeling',
     price: "$27.99",
     image: "🌱",
-    rarity: "Seasonal",
+    rarityKey: 'seasonal',
   },
   {
     id: 6,
-    name: "Matcha Tencha",
-    origin: "Kyoto, Japan",
-    notes: "Creamy, Vegetal, Sweet",
+    teaKey: 'matchaTencha',
+    originKey: 'kyoto',
+    notesKey: 'matchaTencha',
     price: "$34.99",
     image: "✨",
-    rarity: "Ceremonial",
+    rarityKey: 'ceremonial',
   },
 ];
 
@@ -272,6 +321,7 @@ export default function TeaCatalog() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();  // Add this line
 
   useEffect(() => {
     setMounted(true);
@@ -312,7 +362,7 @@ export default function TeaCatalog() {
             className="text-3xl md:text-4xl font-serif mb-3"
             style={{ color: "var(--text-primary)" }}
           >
-            Our Tea Collection
+            {t('home.catalog.title')}  {/* Use translation */}
           </motion.h2>
           <motion.div
             initial={{ width: 0 }}
@@ -328,7 +378,7 @@ export default function TeaCatalog() {
             className="max-w-2xl mx-auto text-sm tracking-wide"
             style={{ color: "var(--text-secondary)" }}
           >
-            Each leaf tells a story of terroir, tradition, and time
+            {t('home.catalog.subtitle')}  {/* Use translation */}
           </motion.p>
         </div>
 
@@ -354,7 +404,7 @@ export default function TeaCatalog() {
                 {/* Rarity badge */}
                 <div className="absolute top-3 right-3">
                   <span className="text-[10px] tracking-wider bg-amber-900/60 text-amber-400 px-2 py-1 rounded-full">
-                    {tea.rarity}
+                    {t(`rarity.${tea.rarityKey}`)}  {/* Use translation */}
                   </span>
                 </div>
                 {/* Overlay gradient on hover */}
@@ -367,13 +417,13 @@ export default function TeaCatalog() {
                   className="text-xl font-serif mb-1 group-hover:opacity-80 transition-colors"
                   style={{ color: "var(--text-primary)" }}
                 >
-                  {tea.name}
+                  {t(`tea.${tea.teaKey}`)}  {/* Use translation */}
                 </h3>
                 <p
                   className="text-xs mb-3 tracking-wide"
                   style={{ color: "var(--accent)", opacity: 0.5 }}
                 >
-                  {tea.origin}
+                  {t(`origin.${tea.originKey}`)}  {/* Use translation */}
                 </p>
 
                 {/* Tasting notes */}
@@ -382,13 +432,13 @@ export default function TeaCatalog() {
                     className="text-[11px] uppercase tracking-wider mb-1"
                     style={{ color: "var(--text-secondary)", opacity: 0.7 }}
                   >
-                    Tasting Notes
+                    {t('catalog.tastingNotes')}  {/* Use translation */}
                   </p>
                   <p
                     className="text-sm"
                     style={{ color: "var(--text-secondary)" }}
                   >
-                    {tea.notes}
+                    {t(`notes.${tea.notesKey}`)}  {/* Use translation */}
                   </p>
                 </div>
 
@@ -413,7 +463,7 @@ export default function TeaCatalog() {
                       (e.currentTarget.style.color = "var(--text-secondary)")
                     }
                   >
-                    Learn More
+                    {t('catalog.learnMore')}  {/* Use translation */}
                     <svg
                       className="w-3 h-3 group-hover:translate-x-1 transition-transform"
                       fill="none"
@@ -441,11 +491,10 @@ export default function TeaCatalog() {
           className="text-center mt-12"
         >
           <Link href="/catalog">
-            <button className="view-all-button">View Full Collection →</button>
+            <button className="view-all-button">{t('catalog.viewFull')}</button>  {/* Use translation */}
           </Link>
         </motion.div>
       </div>
-
 
       <style jsx>{`
         .view-all-button:hover {

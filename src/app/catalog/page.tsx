@@ -2,101 +2,116 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import CatalogHeader from "../components/CatalogHeader";
+import { useLanguage } from '../context/LanguageContext';
 
 const teaProducts = [
   {
     id: 1,
-    name: "Silver Needle White Tea",
-    origin: "Fujian, China",
-    notes: "Honey, Melon, Fresh Hay",
-    description: "Hand-harvested only two days each spring. These silvery buds produce a delicate, sweet liquor with notes of fresh hay and honey.",
+    teaKey: "silverNeedle",
+    originKey: "fujian",
+    notesKey: "silverNeedle",
+    descriptionKey: "silverNeedle",
     caffeine: "Low",
     brewTime: "2-3 minutes",
     temperature: "175°F",
     price: "$24.99",
     image: "🍃",
-    rarity: "Rare",
+    rarityKey: "rare",
     category: "White Tea",
+    categoryKey: "white",
   },
   {
     id: 2,
-    name: "Da Hong Pao",
-    origin: "Wuyi Mountains",
-    notes: "Mineral, Orchid, Stone Fruit",
-    description: "The legendary 'Big Red Robe' from the cliffs of Wuyi. Complex mineral notes with orchid fragrance and stone fruit sweetness.",
+    teaKey: "daHongPao",
+    originKey: "wuyi",
+    notesKey: "daHongPao",
+    descriptionKey: "daHongPao",
     caffeine: "Medium",
     brewTime: "3-4 minutes",
     temperature: "200°F",
     price: "$32.99",
     image: "🌿",
-    rarity: "Premium",
+    rarityKey: "premium",
     category: "Oolong",
+    categoryKey: "oolong",
   },
   {
     id: 3,
-    name: "Gyokuro",
-    origin: "Uji, Japan",
-    notes: "Umami, Seaweed, Sweet",
-    description: "Shaded for three weeks before harvest, this tea develops intense umami and sweet notes. A meditation in a cup.",
+    teaKey: "gyokuro",
+    originKey: "uji",
+    notesKey: "gyokuro",
+    descriptionKey: "gyokuro",
     caffeine: "Medium",
     brewTime: "1-2 minutes",
     temperature: "140°F",
     price: "$29.99",
     image: "🍵",
-    rarity: "Limited",
+    rarityKey: "limited",
     category: "Green Tea",
+    categoryKey: "green",
   },
   {
     id: 4,
-    name: "Ancient Pu-Erh",
-    origin: "Yunnan, China",
-    notes: "Earthy, Dark Chocolate, Mushroom",
-    description: "Aged for 10 years in Yunnan cellars. Smooth, earthy, with deep complexity that evolves with each steep.",
+    teaKey: "ancientPuErh",
+    originKey: "yunnan",
+    notesKey: "ancientPuErh",
+    descriptionKey: "ancientPuErh",
     caffeine: "High",
     brewTime: "4-5 minutes",
     temperature: "212°F",
     price: "$45.99",
     image: "🍂",
-    rarity: "Aged 10 Years",
+    rarityKey: "aged10",
     category: "Pu-Erh",
+    categoryKey: "puerh",
   },
   {
     id: 5,
-    name: "Darjeeling First Flush",
-    origin: "West Bengal, India",
-    notes: "Muscatel, Floral, Citrus",
-    description: "The 'Champagne of Teas'. Light, bright, with distinctive muscatel notes and a floral aroma.",
+    teaKey: "darjeeling",
+    originKey: "westBengal",
+    notesKey: "darjeeling",
+    descriptionKey: "darjeeling",
     caffeine: "Medium",
     brewTime: "2-3 minutes",
     temperature: "195°F",
     price: "$27.99",
     image: "🌱",
-    rarity: "Seasonal",
+    rarityKey: "seasonal",
     category: "Black Tea",
+    categoryKey: "black",
   },
   {
     id: 6,
-    name: "Matcha Tencha",
-    origin: "Kyoto, Japan",
-    notes: "Creamy, Vegetal, Sweet",
-    description: "Ceremonial grade matcha from 50-year-old tea bushes. Vibrant green, smooth, with sweet vegetal notes.",
+    teaKey: "matchaTencha",
+    originKey: "kyoto",
+    notesKey: "matchaTencha",
+    descriptionKey: "matchaTencha",
     caffeine: "High",
     brewTime: "Whisk",
     temperature: "175°F",
     price: "$34.99",
     image: "✨",
-    rarity: "Ceremonial",
+    rarityKey: "ceremonial",
     category: "Matcha",
+    categoryKey: "matcha",
   },
 ];
 
-const categories = ["All", "White Tea", "Green Tea", "Oolong", "Black Tea", "Pu-Erh", "Matcha"];
+const categories = [
+  { key: "all", label: "All", value: "All" },
+  { key: "white", label: "White Tea", value: "White Tea" },
+  { key: "green", label: "Green Tea", value: "Green Tea" },
+  { key: "oolong", label: "Oolong", value: "Oolong" },
+  { key: "black", label: "Black Tea", value: "Black Tea" },
+  { key: "puerh", label: "Pu-Erh", value: "Pu-Erh" },
+  { key: "matcha", label: "Matcha", value: "Matcha" },
+];
 
 export default function CatalogPage() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProducts, setFilteredProducts] = useState(teaProducts);
   const [isLoading, setIsLoading] = useState(true);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setIsLoading(false);
@@ -123,13 +138,36 @@ export default function CatalogPage() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
   };
 
+  // Get translated category label
+  const getCategoryLabel = (categoryValue: string) => {
+    if (categoryValue === "All") return t('filter.all');
+    const category = categories.find(c => c.value === categoryValue);
+    if (category) {
+      return t(`filter.${category.key}`);
+    }
+    return categoryValue;
+  };
+
   return (
     <div className="min-h-screen pt-24 pb-20 transition-colors duration-300"
          style={{ background: 'linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary))' }}>
       <div className="container mx-auto px-4">
         
-        {/* Catalog Header with Steaming Cup */}
-        {/* <CatalogHeader /> */}
+        {/* Page Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h1 className="text-4xl md:text-5xl font-serif mb-3" style={{ color: 'var(--text-primary)' }}>
+            {t('catalog.title')}
+          </h1>
+          <div className="w-16 h-px mx-auto mb-4" style={{ backgroundColor: 'var(--border-color)' }} />
+          <p className="max-w-2xl mx-auto text-sm tracking-wide" style={{ color: 'var(--text-secondary)' }}>
+            {t('catalog.subtitle')}
+          </p>
+        </motion.div>
 
         {/* Filter Categories */}
         <motion.div
@@ -140,32 +178,32 @@ export default function CatalogPage() {
         >
           {categories.map((category) => (
             <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
+              key={category.value}
+              onClick={() => setSelectedCategory(category.value)}
               className={`px-5 py-2 rounded-full text-sm tracking-wide transition-all duration-300 ${
-                selectedCategory === category
+                selectedCategory === category.value
                   ? "bg-opacity-20 border"
                   : "border border-transparent"
               }`}
               style={{
-                backgroundColor: selectedCategory === category ? 'var(--accent)' : 'transparent',
-                color: selectedCategory === category ? 'var(--bg-primary)' : 'var(--text-secondary)',
-                borderColor: selectedCategory === category ? 'var(--accent)' : 'transparent',
+                backgroundColor: selectedCategory === category.value ? 'var(--accent)' : 'transparent',
+                color: selectedCategory === category.value ? 'var(--bg-primary)' : 'var(--text-secondary)',
+                borderColor: selectedCategory === category.value ? 'var(--accent)' : 'transparent',
               }}
               onMouseEnter={(e) => {
-                if (selectedCategory !== category) {
+                if (selectedCategory !== category.value) {
                   e.currentTarget.style.borderColor = 'var(--accent)';
                   e.currentTarget.style.color = 'var(--accent)';
                 }
               }}
               onMouseLeave={(e) => {
-                if (selectedCategory !== category) {
+                if (selectedCategory !== category.value) {
                   e.currentTarget.style.borderColor = 'transparent';
                   e.currentTarget.style.color = 'var(--text-secondary)';
                 }
               }}
             >
-              {category}
+              {getCategoryLabel(category.value)}
             </button>
           ))}
         </motion.div>
@@ -212,12 +250,12 @@ export default function CatalogPage() {
                   
                   <div className="absolute top-3 right-3">
                     <span className="text-[10px] tracking-wider bg-amber-900/60 text-amber-400 px-2 py-1 rounded-full backdrop-blur-sm">
-                      {tea.rarity}
+                      {t(`rarity.${tea.rarityKey}`)}
                     </span>
                   </div>
                   <div className="absolute top-3 left-3">
                     <span className="text-[10px] tracking-wider bg-black/40 text-gray-400 px-2 py-1 rounded-full backdrop-blur-sm">
-                      {tea.category}
+                      {t(`filter.${tea.categoryKey}`)}
                     </span>
                   </div>
                 </div>
@@ -226,17 +264,19 @@ export default function CatalogPage() {
                 <div className="p-6">
                   <h3 className="text-xl font-serif mb-1 group-hover:opacity-80 transition-colors"
                       style={{ color: 'var(--text-primary)' }}>
-                    {tea.name}
+                    {t(`tea.${tea.teaKey}`)}
                   </h3>
                   <p className="text-xs mb-3 tracking-wide" style={{ color: 'var(--accent)', opacity: 0.5 }}>
-                    {tea.origin}
+                    {t(`origin.${tea.originKey}`)}
                   </p>
                   
                   <div className="mb-4">
                     <p className="text-[10px] uppercase tracking-wider mb-1" style={{ color: 'var(--text-secondary)', opacity: 0.7 }}>
-                      Tasting Notes
+                      {t('catalog.tastingNotes')}
                     </p>
-                    <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>{tea.notes}</p>
+                    <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
+                      {t(`notes.${tea.notesKey}`)}
+                    </p>
                   </div>
                   
                   <motion.div 
@@ -248,15 +288,15 @@ export default function CatalogPage() {
                   >
                     <div className="flex justify-between text-xs">
                       <div>
-                        <span className="text-gray-500">🍃 Caffeine</span>
+                        <span className="text-gray-500">🍃 {t('catalog.caffeine')}</span>
                         <p style={{ color: 'var(--accent)' }}>{tea.caffeine}</p>
                       </div>
                       <div>
-                        <span className="text-gray-500">⏱️ Steep</span>
+                        <span className="text-gray-500">⏱️ {t('catalog.steepTime')}</span>
                         <p style={{ color: 'var(--accent)' }}>{tea.brewTime}</p>
                       </div>
                       <div>
-                        <span className="text-gray-500">🌡️ Temp</span>
+                        <span className="text-gray-500">🌡️ {t('catalog.temperature')}</span>
                         <p style={{ color: 'var(--accent)' }}>{tea.temperature}</p>
                       </div>
                     </div>
@@ -272,7 +312,7 @@ export default function CatalogPage() {
                       onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
                       onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-secondary)'}
                     >
-                      View Details
+                      {t('catalog.learnMore')}
                       <svg className="w-3 h-3 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
@@ -304,7 +344,7 @@ export default function CatalogPage() {
               className="mt-4 text-sm transition-colors hover:opacity-80"
               style={{ color: 'var(--accent)' }}
             >
-              View all teas →
+              {t('catalog.viewFull')}
             </button>
           </div>
         )}
@@ -322,7 +362,7 @@ export default function CatalogPage() {
               <svg className="w-4 h-4 rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
               </svg>
-              Back to Home
+              {t('catalog.backToHome')}
             </button>
           </Link>
         </motion.div>

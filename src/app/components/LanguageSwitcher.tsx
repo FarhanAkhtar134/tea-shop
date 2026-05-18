@@ -1,40 +1,31 @@
 "use client";
-import { motion } from "framer-motion";
-import { useLanguage } from "../context/LanguageContext";
+import { useLanguage } from '../context/LanguageContext';
 
 export default function LanguageSwitcher() {
   const { language, setLanguage } = useLanguage();
 
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.8 }}
-      animate={{ opacity: 1, scale: 1 }}
-      className="fixed top-20 right-4 z-50 flex gap-1 p-1 rounded-full backdrop-blur-md border"
-      style={{ 
-        backgroundColor: 'var(--card-bg)',
-        borderColor: 'var(--border-color)'
-      }}
-    >
+    <div className="flex gap-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
       <button
         onClick={() => setLanguage('en')}
-        className="px-3 py-1 text-xs rounded-full transition-all duration-200"
-        style={{
-          backgroundColor: language === 'en' ? 'var(--accent)' : 'transparent',
-          color: language === 'en' ? 'var(--bg-primary)' : 'var(--text-secondary)'
-        }}
+        className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 ${
+          language === 'en'
+            ? 'bg-amber-600 text-white shadow-sm'
+            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+        }`}
       >
         EN
       </button>
       <button
         onClick={() => setLanguage('zh')}
-        className="px-3 py-1 text-xs rounded-full transition-all duration-200"
-        style={{
-          backgroundColor: language === 'zh' ? 'var(--accent)' : 'transparent',
-          color: language === 'zh' ? 'var(--bg-primary)' : 'var(--text-secondary)'
-        }}
+        className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all duration-200 ${
+          language === 'zh'
+            ? 'bg-amber-600 text-white shadow-sm'
+            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+        }`}
       >
         中文
       </button>
-    </motion.div>
+    </div>
   );
 }
