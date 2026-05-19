@@ -2,7 +2,7 @@
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
 import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from "../context/LanguageContext";
 
 export default function UnfurlingLeaf() {
   const [hasAnimated, setHasAnimated] = useState(false);
@@ -24,7 +24,8 @@ export default function UnfurlingLeaf() {
 
   // Memoize particles to prevent recreation
   const particles = useMemo(() => {
-    return [...Array(6)].map((_, i) => ({ // Reduced from 8 to 6 particles
+    return [...Array(6)].map((_, i) => ({
+      // Reduced from 8 to 6 particles
       id: i,
       left: 50 + (Math.random() - 0.5) * 80,
       top: 50 + (Math.random() - 0.5) * 80,
@@ -49,9 +50,9 @@ export default function UnfurlingLeaf() {
       {/* Warm ambient light - single light source */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-amber-800/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 relative z-10 min-h-screen flex flex-col items-center justify-center">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 min-h-screen flex flex-col items-center justify-center">
         {/* Animated Leaf SVG - optimized */}
-        <div className="relative w-64 h-80 mb-12 will-change-transform">
+        <div className="relative w-48 h-60 sm:w-64 sm:h-80 mb-8 sm:mb-12 will-change-transform">
           <svg viewBox="0 0 200 250" className="w-full h-full">
             {/* Leaf stem - simplified */}
             <motion.path
@@ -81,9 +82,24 @@ export default function UnfurlingLeaf() {
               animate={hasAnimated ? { opacity: 0.5 } : {}}
               transition={{ duration: 0.5, delay: 1.2 }}
             >
-              <path d="M100 150 L100 80" stroke="#D4A574" strokeWidth="0.8" fill="none" />
-              <path d="M100 110 L60 85" stroke="#D4A574" strokeWidth="0.5" fill="none" />
-              <path d="M100 110 L140 85" stroke="#D4A574" strokeWidth="0.5" fill="none" />
+              <path
+                d="M100 150 L100 80"
+                stroke="#D4A574"
+                strokeWidth="0.8"
+                fill="none"
+              />
+              <path
+                d="M100 110 L60 85"
+                stroke="#D4A574"
+                strokeWidth="0.5"
+                fill="none"
+              />
+              <path
+                d="M100 110 L140 85"
+                stroke="#D4A574"
+                strokeWidth="0.5"
+                fill="none"
+              />
             </motion.g>
 
             {/* Inner glow - simplified pulse using CSS animation instead of Framer Motion */}
@@ -100,7 +116,6 @@ export default function UnfurlingLeaf() {
               </radialGradient>
             </defs>
           </svg>
-
           {/* Floating particles - optimized with CSS transforms */}
           {hasAnimated &&
             particles.map((particle) => (
@@ -132,23 +147,23 @@ export default function UnfurlingLeaf() {
           initial={{ opacity: 0 }}
           animate={hasAnimated ? { opacity: 1 } : {}}
           transition={{ duration: 0.5, delay: 2 }}
-          className="text-center will-change-transform"
+          className="text-center will-change-transform px-4"
         >
           <h1
-            className="text-4xl md:text-5xl lg:text-6xl font-serif mb-4 tracking-wide"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-3 sm:mb-4 tracking-wide"
             style={{ color: "var(--text-primary)" }}
           >
-            {t('home.hero.title')}
+            {t("home.hero.title")}
           </h1>
           <div
-            className="w-16 h-px mx-auto my-6"
+            className="w-12 sm:w-16 h-px mx-auto my-4 sm:my-6"
             style={{ backgroundColor: "var(--border-color)" }}
           />
           <p
-            className="max-w-md mx-auto text-base md:text-lg font-light mb-8"
+            className="max-w-md mx-auto text-sm sm:text-base md:text-lg font-light mb-6 sm:mb-8 px-4"
             style={{ color: "var(--text-secondary)" }}
           >
-            {t('home.hero.subtitle')}
+            {t("home.hero.subtitle")}
           </p>
 
           <motion.div
@@ -157,8 +172,8 @@ export default function UnfurlingLeaf() {
             transition={{ duration: 0.4, delay: 2.3 }}
           >
             <Link href="/catalog">
-              <button className="explore-button relative overflow-hidden">
-                {t('home.hero.button')}
+              <button className="explore-button relative overflow-hidden text-sm sm:text-base px-5 sm:px-8 py-2 sm:py-3">
+                {t("home.hero.button")}
               </button>
             </Link>
           </motion.div>
@@ -170,7 +185,7 @@ export default function UnfurlingLeaf() {
         initial={{ opacity: 0 }}
         animate={hasAnimated ? { opacity: 0.4 } : {}}
         transition={{ delay: 2.8 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
       >
         <div className="w-6 h-10 border border-amber-500/30 rounded-full flex justify-center">
           <motion.div
@@ -194,8 +209,13 @@ export default function UnfurlingLeaf() {
         }
 
         @keyframes gentlePulse {
-          0%, 100% { opacity: 0.1; }
-          50% { opacity: 0.25; }
+          0%,
+          100% {
+            opacity: 0.1;
+          }
+          50% {
+            opacity: 0.25;
+          }
         }
 
         .explore-button {

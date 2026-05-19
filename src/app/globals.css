@@ -117,3 +117,65 @@ body {
   background-color: rgba(139, 105, 20, 0.15);
   color: #8B6914;
 }
+
+
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  /* Better spacing for touch targets */
+  button, 
+  a,
+  [role="button"],
+  .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Better text readability on mobile */
+  p, li, .text-content {
+    font-size: 16px; /* Prevents zoom on focus in iOS */
+    line-height: 1.5;
+  }
+  
+  /* Adjust spacing for sections */
+  section {
+    scroll-margin-top: 60px;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  section {
+    scroll-margin-top: 70px;
+  }
+}
+
+/* Desktop optimizations */
+@media (min-width: 1025px) {
+  section {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Improve image loading */
+img {
+  content-visibility: auto;
+}

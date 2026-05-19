@@ -92,7 +92,7 @@ export default function AboutPage() {
          style={{ background: 'linear-gradient(to bottom, var(--bg-primary), var(--bg-secondary))' }}>
       
       {/* Hero Section with Background Image */}
-      <section ref={heroRef} className="relative min-h-[60vh] sm:min-h-[70vh] flex items-center justify-center overflow-hidden">
+      <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/about/hero-bg.jpg"
@@ -111,12 +111,12 @@ export default function AboutPage() {
             animate={heroInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-3 sm:mb-4 text-white px-4"
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif mb-2 sm:mb-3 md:mb-4 text-white px-2 sm:px-4"
                 style={{ textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
               {t('about.hero.title')}
             </h1>
-            <div className="w-16 sm:w-20 h-px mx-auto mb-4 sm:mb-6 bg-amber-400" />
-            <p className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light text-white/90 px-4">
+            <div className="w-12 sm:w-16 md:w-20 h-px mx-auto mb-3 sm:mb-4 md:mb-6 bg-amber-400" />
+            <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl font-light text-white/90 px-4">
               {t('about.hero.subtitle')}
             </p>
           </motion.div>
@@ -124,41 +124,41 @@ export default function AboutPage() {
       </section>
 
       {/* The Art of Blending Section */}
-      <section ref={blendingRef} className="py-12 sm:py-16 md:py-20">
+      <section ref={blendingRef} className="py-10 sm:py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={blendingInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
+            className="text-center mb-6 sm:mb-8 md:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-3"
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-2 sm:mb-3"
                 style={{ color: 'var(--text-primary)' }}>
               {t('about.blending.title')}
             </h2>
-            <div className="w-16 h-px mx-auto mb-4" style={{ backgroundColor: 'var(--border-color)' }} />
+            <div className="w-12 sm:w-16 h-px mx-auto mb-3 sm:mb-4" style={{ backgroundColor: 'var(--border-color)' }} />
             <p className="max-w-2xl mx-auto text-xs sm:text-sm tracking-wide px-4"
                style={{ color: 'var(--text-secondary)' }}>
               {t('about.blending.subtitle')}
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 items-center mb-10 md:mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={blendingInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="order-2 lg:order-1"
             >
-              <div className="text-5xl sm:text-6xl mb-4 sm:mb-6">🎨</div>
-              <h3 className="text-xl sm:text-2xl font-serif mb-3 sm:mb-4"
+              <div className="text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 md:mb-6 text-center lg:text-left">🎨</div>
+              <h3 className="text-lg sm:text-xl md:text-2xl font-serif mb-2 sm:mb-3 md:mb-4 text-center lg:text-left"
                   style={{ color: 'var(--text-primary)' }}>
                 {t('about.blending.section1.title')}
               </h3>
-              <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-sm sm:text-base leading-relaxed mb-3 sm:mb-4 text-center lg:text-left" style={{ color: 'var(--text-secondary)' }}>
                 {t('about.blending.section1.p1')}
               </p>
-              <p className="text-sm sm:text-base leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              <p className="text-sm sm:text-base leading-relaxed text-center lg:text-left" style={{ color: 'var(--text-secondary)' }}>
                 {t('about.blending.section1.p2')}
               </p>
             </motion.div>
@@ -167,7 +167,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={blendingInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2"
+              className="relative h-56 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2"
             >
               <Image
                 src="/images/about/blending.jpg"
@@ -185,7 +185,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 30 }}
             animate={blendingInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 pt-6 sm:pt-8 border-t"
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 pt-6 sm:pt-8 border-t"
             style={{ borderColor: 'var(--border-color)' }}
           >
             {blendingCards.map((card, index) => (
@@ -194,7 +194,7 @@ export default function AboutPage() {
                 className="group rounded-xl overflow-hidden transition-all duration-300 hover:transform hover:-translate-y-2"
                 style={{ backgroundColor: 'var(--bg-primary)' }}
               >
-                <div className="relative h-48 sm:h-56 overflow-hidden">
+                <div className="relative h-40 sm:h-48 md:h-56 overflow-hidden">
                   <Image
                     src={card.image}
                     alt={card.alt}
@@ -204,8 +204,8 @@ export default function AboutPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
-                <div className="p-4 sm:p-6">
-                  <h4 className="font-serif text-lg sm:text-xl mb-2" style={{ color: 'var(--text-primary)' }}>
+                <div className="p-3 sm:p-4 md:p-6">
+                  <h4 className="font-serif text-base sm:text-lg md:text-xl mb-1 sm:mb-2" style={{ color: 'var(--text-primary)' }}>
                     {t(card.titleKey)}
                   </h4>
                   <p className="text-xs sm:text-sm" style={{ color: 'var(--text-secondary)' }}>
@@ -219,19 +219,19 @@ export default function AboutPage() {
       </section>
 
       {/* Global Sourcing Section */}
-      <section ref={sourcingRef} className="py-12 sm:py-16 md:py-20" style={{ backgroundColor: 'var(--bg-secondary)' }}>
+      <section ref={sourcingRef} className="py-10 sm:py-12 md:py-16 lg:py-20" style={{ backgroundColor: 'var(--bg-secondary)' }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={sourcingInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-center mb-8 sm:mb-12"
+            className="text-center mb-6 sm:mb-8 md:mb-12"
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-3"
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-2 sm:mb-3"
                 style={{ color: 'var(--text-primary)' }}>
               {t('about.sourcing.title')}
             </h2>
-            <div className="w-16 h-px mx-auto mb-4" style={{ backgroundColor: 'var(--border-color)' }} />
+            <div className="w-12 sm:w-16 h-px mx-auto mb-3 sm:mb-4" style={{ backgroundColor: 'var(--border-color)' }} />
             <p className="max-w-2xl mx-auto text-xs sm:text-sm tracking-wide px-4"
                style={{ color: 'var(--text-secondary)' }}>
               {t('about.sourcing.subtitle')}
@@ -243,7 +243,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={sourcingInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative h-48 sm:h-56 md:h-64 rounded-2xl overflow-hidden mb-8 sm:mb-12 shadow-xl"
+            className="relative h-40 sm:h-48 md:h-56 lg:h-64 rounded-xl sm:rounded-2xl overflow-hidden mb-8 sm:mb-10 md:mb-12 shadow-xl"
           >
             <Image
               src="/images/about/sourcing-map.jpg"
@@ -261,7 +261,7 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Origin Cards with Images */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
             {origins.map((origin, index) => (
               <motion.div
                 key={index}
@@ -272,7 +272,7 @@ export default function AboutPage() {
                 className="group rounded-xl overflow-hidden transition-all duration-300"
                 style={{ backgroundColor: 'var(--bg-primary)' }}
               >
-                <div className="relative h-40 sm:h-48 overflow-hidden">
+                <div className="relative h-40 sm:h-44 md:h-48 overflow-hidden">
                   <Image
                     src={origin.image}
                     alt={t(`origin.${origin.regionKey}`)}
@@ -282,8 +282,8 @@ export default function AboutPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 </div>
-                <div className="p-4 sm:p-6">
-                  <h3 className="text-base sm:text-lg font-serif mb-1 sm:mb-2" style={{ color: 'var(--text-primary)' }}>
+                <div className="p-3 sm:p-4 md:p-6">
+                  <h3 className="text-sm sm:text-base md:text-lg font-serif mb-1 sm:mb-2" style={{ color: 'var(--text-primary)' }}>
                     {t(`origin.${origin.regionKey}`)}
                   </h3>
                   <p className="text-[10px] sm:text-xs uppercase tracking-wider mb-1 sm:mb-2" 
@@ -301,42 +301,42 @@ export default function AboutPage() {
       </section>
 
       {/* What Makes Us Unique Section */}
-      <section className="py-12 sm:py-16 md:py-20">
+      <section className="py-10 sm:py-12 md:py-16 lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-3 sm:mb-4 px-4"
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif mb-2 sm:mb-3 md:mb-4 px-4"
                 style={{ color: 'var(--text-primary)' }}>
               {t('about.unique.title')}
             </h2>
-            <div className="w-16 h-px mx-auto mb-4 sm:mb-6" style={{ backgroundColor: 'var(--border-color)' }} />
-            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 px-4" 
+            <div className="w-12 sm:w-16 h-px mx-auto mb-3 sm:mb-4 md:mb-6" style={{ backgroundColor: 'var(--border-color)' }} />
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-4 sm:mb-6 md:mb-8 px-4" 
                style={{ color: 'var(--text-secondary)' }}>
               {t('about.unique.p1')}
             </p>
-            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-8 sm:mb-12 px-4" 
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed mb-6 sm:mb-8 md:mb-12 px-4" 
                style={{ color: 'var(--text-secondary)' }}>
               {t('about.unique.p2')}
             </p>
             
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 pt-6 sm:pt-8 border-t" 
+            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 pt-4 sm:pt-6 md:pt-8 border-t" 
                  style={{ borderColor: 'var(--border-color)' }}>
-              <div className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm transition-all hover:scale-105 duration-300"
+              <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm transition-all hover:scale-105 duration-300"
                   style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}>
                 🌍 {t('about.unique.badge1')}
               </div>
-              <div className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm transition-all hover:scale-105 duration-300"
+              <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm transition-all hover:scale-105 duration-300"
                   style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}>
                 🎨 {t('about.unique.badge2')}
               </div>
-              <div className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm transition-all hover:scale-105 duration-300"
+              <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm transition-all hover:scale-105 duration-300"
                   style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}>
                 ✨ {t('about.unique.badge3')}
               </div>
-              <div className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm transition-all hover:scale-105 duration-300"
+              <div className="px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 md:py-3 rounded-full text-[10px] sm:text-xs md:text-sm transition-all hover:scale-105 duration-300"
                   style={{ backgroundColor: 'var(--bg-primary)', color: 'var(--accent)' }}>
                 🍃 {t('about.unique.badge4')}
               </div>
@@ -346,7 +346,7 @@ export default function AboutPage() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="mt-8 sm:mt-10 md:mt-12 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-sm sm:text-base transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="mt-6 sm:mt-8 md:mt-10 lg:mt-12 px-5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full text-sm sm:text-base transition-all duration-300 shadow-lg hover:shadow-xl w-auto min-w-[200px] sm:min-w-0"
                 style={{
                   backgroundColor: 'var(--accent)',
                   color: 'var(--bg-primary)'
@@ -366,6 +366,15 @@ export default function AboutPage() {
         }
         .animate-float {
           animation: float 3s ease-in-out infinite;
+        }
+        
+        /* Better touch targets on mobile */
+        @media (max-width: 640px) {
+          button, 
+          a,
+          [role="button"] {
+            min-height: 44px;
+          }
         }
       `}</style>
     </div>
