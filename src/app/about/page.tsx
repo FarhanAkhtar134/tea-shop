@@ -95,7 +95,7 @@ export default function AboutPage() {
       <section ref={heroRef} className="relative min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/about/hero-bg.jpg"
+            src="/tea-shop/images/about/hero-bg.jpg"
             alt="Tea plantation background"
             fill
             className="object-cover"
@@ -170,7 +170,7 @@ export default function AboutPage() {
               className="relative h-56 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2"
             >
               <Image
-                src="/images/about/blending.jpg"
+                src="/tea-shop/images/about/blending.jpg"
                 alt="Tea blending process"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
@@ -246,7 +246,7 @@ export default function AboutPage() {
             className="relative h-40 sm:h-48 md:h-56 lg:h-64 rounded-xl sm:rounded-2xl overflow-hidden mb-8 sm:mb-10 md:mb-12 shadow-xl"
           >
             <Image
-              src="/images/about/sourcing-map.jpg"
+              src="/tea-shop/images/about/sourcing-map.jpg"
               alt="Global tea sourcing locations"
               fill
               className="object-cover"
