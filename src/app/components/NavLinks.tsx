@@ -19,6 +19,10 @@ export default function NavLinks() {
             style={{ color: 'var(--text-primary)' }}>
         {t('nav.about')}
       </Link>
+      <Link href="/contact" className="transition-colors hover:opacity-80 text-sm md:text-base whitespace-nowrap"
+            style={{ color: 'var(--text-primary)' }}>
+        {t('nav.contact')}
+      </Link>
     </div>
   );
 }

@@ -25,7 +25,7 @@ export default function MobileMenu() {
       </button>
 
       {isOpen && (
-        <div className="absolute top-16 left-0 right-0 p-4 shadow-lg z-50"
+        <div className="absolute top-14 left-0 right-0 p-4 shadow-lg z-50"
              style={{ backgroundColor: 'var(--bg-primary)', borderColor: 'var(--border-color)' }}>
           <div className="flex flex-col gap-4">
             <Link 
@@ -51,6 +51,14 @@ export default function MobileMenu() {
               style={{ color: 'var(--text-primary)' }}
             >
               {t('nav.about')}
+            </Link>
+            <Link 
+              href="/contact" 
+              onClick={() => setIsOpen(false)}
+              className="transition-colors hover:opacity-80 py-2 text-center"
+              style={{ color: 'var(--text-primary)' }}
+            >
+              {t('nav.contact')}
             </Link>
           </div>
         </div>
