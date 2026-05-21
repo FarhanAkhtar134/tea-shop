@@ -40,7 +40,7 @@ export default function RootLayout({
                   <Link href="/" className="flex items-center gap-2 transition-colors hover:opacity-80">
                     <div className="relative w-8 h-8 sm:w-10 sm:h-10">
                       <Image
-                        src="/tea-shop/logo.jpg"
+                        src="/images/logo.jpg"
                         alt="Tea Haven Logo"
                         fill
                         className="object-contain rounded-full"

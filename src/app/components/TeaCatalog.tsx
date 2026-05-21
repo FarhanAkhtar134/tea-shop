@@ -13,7 +13,7 @@ const teaProducts = [
     originKey: "fujian",
     notesKey: "silverNeedle",
     price: "$24.99",
-    image: "/tea-shop/images/teas/silver-needle.jpg", // Path to image
+    image: "/images/teas/silver-needle.jpg",
     rarityKey: "rare",
   },
   {
@@ -22,7 +22,7 @@ const teaProducts = [
     originKey: "wuyi",
     notesKey: "daHongPao",
     price: "$32.99",
-    image: "/tea-shop/images/teas/da-hong-pao.jpg",
+    image: "/images/teas/da-hong-pao.jpg",
     rarityKey: "premium",
   },
   {
@@ -31,7 +31,7 @@ const teaProducts = [
     originKey: "uji",
     notesKey: "gyokuro",
     price: "$29.99",
-    image: "/tea-shop/images/teas/gyokuro.jpg",
+    image: "/images/teas/gyokuro.jpg",
     rarityKey: "limited",
   },
   {
@@ -40,7 +40,7 @@ const teaProducts = [
     originKey: "yunnan",
     notesKey: "ancientPuErh",
     price: "$45.99",
-    image: "/tea-shop/images/teas/ancient-pu-erh.jpg",
+    image: "/images/teas/ancient-pu-erh.jpg",
     rarityKey: "aged10",
   },
   {
@@ -49,7 +49,7 @@ const teaProducts = [
     originKey: "westBengal",
     notesKey: "darjeeling",
     price: "$27.99",
-    image: "/tea-shop/images/teas/darjeeling.jpg",
+    image: "/images/teas/darjeeling.jpg",
     rarityKey: "seasonal",
   },
   {
