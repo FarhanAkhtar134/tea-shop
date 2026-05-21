@@ -26,42 +26,42 @@ export default function AboutPage() {
       region: "Wuyi Mountains, China",
       teasKey: "daHongPao",
       characteristicKey: "wuyi",
-      image: "/images/about/wuyi-mountains.jpg",
+      image: "/tea-shop/images/wuyi-mountains.jpg",
       regionKey: "wuyi"
     },
     {
       region: "Yunnan, China",
       teasKey: "puErh",
       characteristicKey: "yunnan",
-      image: "/images/about/yunnan-china.jpg",
+      image: "/tea-shop/images/yunnan-china.jpg",
       regionKey: "yunnan"
     },
     {
       region: "Uji, Japan",
       teasKey: "gyokuro",
       characteristicKey: "uji",
-      image: "/images/about/uji.jpg",
+      image: "/tea-shop/images/uji.jpg",
       regionKey: "uji"
     },
     {
       region: "Darjeeling, India",
       teasKey: "darjeeling",
       characteristicKey: "westBengal",
-      image: "/images/about/west-bengal.jpg",
+      image: "/tea-shop/images/about/west-bengal.jpg",
       regionKey: "westBengal"
     },
     {
       region: "Fujian, China",
       teasKey: "silverNeedle",
       characteristicKey: "fujian",
-      image: "/images/about/fujian.jpg",
+      image: "/tea-shop/images/about/fujian.jpg",
       regionKey: "fujian"
     },
     {
       region: "Kyoto, Japan",
       teasKey: "matcha",
       characteristicKey: "kyoto",
-      image: "/images/about/kyoto.jpg",
+      image: "/tea-shop/images/about/kyoto.jpg",
       regionKey: "kyoto"
     }
   ];
@@ -70,19 +70,19 @@ export default function AboutPage() {
     {
       titleKey: "about.blending.card1.title",
       descKey: "about.blending.card1.desc",
-      image: "/images/about/precision-crafting.jpg",
+      image: "/tea-shop/images/about/precision-crafting.jpg",
       alt: "Precision tea crafting"
     },
     {
       titleKey: "about.blending.card2.title",
       descKey: "about.blending.card2.desc",
-      image: "/images/about/flavour-layering.jpg",
+      image: "/tea-shop/images/about/flavour-layering.jpg",
       alt: "Flavor layering process"
     },
     {
       titleKey: "about.blending.card3.title",
       descKey: "about.blending.card3.desc",
-      image: "/images/about/signature-creations.jpg",
+      image: "/tea-shop/images/about/signature-creations.jpg",
       alt: "Signature tea creations"
     }
   ];
@@ -170,7 +170,7 @@ export default function AboutPage() {
               className="relative h-56 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2"
             >
               <Image
-                src="/tea-shop/images/about/blending.jpg"
+                src="/tea-shop/images/blending.jpg"
                 alt="Tea blending process"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"
