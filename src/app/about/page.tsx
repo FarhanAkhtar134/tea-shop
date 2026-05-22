@@ -26,21 +26,21 @@ export default function AboutPage() {
       region: "Wuyi Mountains, China",
       teasKey: "daHongPao",
       characteristicKey: "wuyi",
-      image: "/tea-shop/images/wuyi-mountains.jpg",
+      image: "/tea-shop/images/about/wuyi-mountains.jpg",
       regionKey: "wuyi"
     },
     {
       region: "Yunnan, China",
       teasKey: "puErh",
       characteristicKey: "yunnan",
-      image: "/tea-shop/images/yunnan-china.jpg",
+      image: "/tea-shop/images/about/yunnan-china.jpg",
       regionKey: "yunnan"
     },
     {
       region: "Uji, Japan",
       teasKey: "gyokuro",
       characteristicKey: "uji",
-      image: "/tea-shop/images/uji.jpg",
+      image: "/tea-shop/images/about/uji.jpg",
       regionKey: "uji"
     },
     {
