@@ -170,7 +170,7 @@ export default function AboutPage() {
               className="relative h-56 sm:h-64 md:h-80 lg:h-96 rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl order-1 lg:order-2"
             >
               <Image
-                src="/tea-shop/images/blending.jpg"
+                src="/tea-shop/images/about/blending.jpg"
                 alt="Tea blending process"
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-700"

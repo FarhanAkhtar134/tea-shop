@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   description: 'Discover the finest organic teas from around the world',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
   icons: {
-    icon: '/favicon.ico',
+    icon: '/tea-shop/favicon.ico',
   },
 }
 
